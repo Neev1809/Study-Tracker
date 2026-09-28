@@ -37,28 +37,28 @@ export default function Header({ children }) {
             icon: 'home'
         },
         {
-            name: 'Progress',
-            href: '/progress',
-            badge: 'Live',
-            icon: 'insights'
-        },
-        {
-            name: 'History',
-            href: '#history',
-            badge: null,
-            icon: 'history'
-        },
-        {
             name: 'Subjects',
             href: '#subjects',
-            badge: '6',
+            badge: '4',
             icon: 'menu_book'
         },
         {
-            name: 'Calendar',
-            href: '#calendar',
+            name: 'Sessions',
+            href: '/session',
+            badge: 'Live',
+            icon: 'schedule'
+        },
+        {
+            name: 'Goals',
+            href: '#goals',
             badge: null,
-            icon: 'calendar_month'
+            icon: 'track_changes'
+        },
+        {
+            name: 'Profile',
+            href: '#profile',
+            badge: null,
+            icon: 'person'
         }
     ];
 
@@ -132,10 +132,16 @@ export default function Header({ children }) {
 
                 {/* Quick Action Button */}
                 <div className="sidebar-action-container">
-                    <button className="sidebar-new-session-btn" title="Start a new study session">
-                        <span className="material-symbols-outlined btn-plus-icon">add</span>
+                    <Link
+                        to="/session"
+                        className="sidebar-new-session-btn"
+                        style={{ textDecoration: 'none' }}
+                        title="Start a new study session"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                        <span className="material-symbols-outlined btn-plus-icon">play_arrow</span>
                         <span>Start Session</span>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Main Navigation Links */}
@@ -211,7 +217,7 @@ export default function Header({ children }) {
                     </ul>
                 </nav>
 
-                {/* Sidebar Footer: Streak Widget */}
+                {/* Sidebar Footer: Streak Widget & Theme Toggle */}
                 <div className="sidebar-footer">
                     <div className="streak-card">
                         <div className="streak-header">
@@ -224,6 +230,14 @@ export default function Header({ children }) {
                         <div className="streak-progress-bar">
                             <div className="streak-fill" style={{ width: '87%' }}></div>
                         </div>
+                    </div>
+
+                    <div className="sidebar-theme-toggle-wrap">
+                        <button type="button" className="sidebar-theme-toggle" title="Toggle Light / Dark mode">
+                            <span className="material-symbols-outlined theme-sym">light_mode</span>
+                            <span className="theme-text">Light / Dark</span>
+                            <span className="material-symbols-outlined theme-sym theme-moon">dark_mode</span>
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -257,7 +271,7 @@ export default function Header({ children }) {
                             <span className="breadcrumb-category">Workspace</span>
                             <span className="breadcrumb-separator">/</span>
                             <span className="breadcrumb-current">
-                                {location.pathname === '/progress' ? 'Progress' : (location.pathname === '/' ? 'Home' : activeTab)}
+                                {location.pathname === '/session' ? 'Study Session' : (location.pathname === '/' ? 'Home' : activeTab)}
                             </span>
                         </div>
                     </div>

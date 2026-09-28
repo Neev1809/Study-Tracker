@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Header from './Components/Header'
-import Progress from './Pages/Progress'
 import Home from './Pages/Home'
+import Session from './Pages/Session'
 
 const router = createBrowserRouter([
   {
@@ -9,8 +9,8 @@ const router = createBrowserRouter([
     element: <><Header /> <Home /></>
   },
   {
-    path: "/progress",
-    element: <><Header /> <Progress /></>
+    path: "/session",
+    element: <><Header /> <Session /></>
   }
 ]);
 
